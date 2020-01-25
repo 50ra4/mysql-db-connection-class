@@ -1,0 +1,13 @@
+.prettierrc
+.prettierignore
+.npmrc
+.nvmrc
+jest.config.js
+tsconfig.json
+tslint.json
+*.test.*
+src/
+docs/
+/.vscode
+prettier.config.js
+private/
