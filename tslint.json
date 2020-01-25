@@ -1,0 +1,31 @@
+{
+  "extends": ["tslint-config-prettier"],
+  "linterOptions": {
+    "exclude": ["config/**/*.js", "node_modules/**/*.ts", "docs/**/*"]
+  },
+  "rules": {
+    "array-type": {
+      "options": ["array-simple"]
+    },
+    "semicolon": [true, "always", "ignore-bound-class-methods"],
+    "trailing-comma": {
+      "options": {
+        "esSpecCompliant": true,
+        "multiline": "always",
+        "singleline": "never"
+      }
+    },
+    "triple-equals": {
+      "options": ["allow-null-check"]
+    },
+    "no-inferrable-types": false,
+    "no-null-keyword": false,
+    "no-invalid-this": true,
+    "no-debugger": true,
+    "no-string-literal": true,
+    "no-reference": true,
+    "no-reference-import": true,
+    "await-promise": true,
+    "jsdoc-format": true
+  }
+}

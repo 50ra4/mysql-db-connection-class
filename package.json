@@ -1,0 +1,46 @@
+{
+  "name": "mysql-db-pool-connection-class",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "jest -c ./jest.config.js --watchAll",
+    "test:nowatch": "jest -c ./jest.config.js",
+    "clean": "rm -rf ./dist",
+    "patch": "npm version patch && npm publish",
+    "republish": "npm run clean && npm run build && npm run patch",
+    "docs": "typedoc --out ./docs --target ES6 --mode file ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shigarashi1/mysql-db-connection-class.git"
+  },
+  "author": "“S.Igarashi” (https://github.com/shigarashi1/sql-generater)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shigarashi1/mysql-db-connection-class/issues"
+  },
+  "homepage": "https://github.com/shigarashi1/mysql-db-connection-class#readme",
+  "dependencies": {
+    "mysql": "2.18.0"
+  },
+  "devDependencies": {
+    "@types/jest": "24.0.25",
+    "@types/mysql": "2.15.8",
+    "@types/node": "13.1.7",
+    "@types/ramda": "^0.26.40",
+    "cross-env": "6.0.3",
+    "date-fns": "^2.9.0",
+    "husky": "4.0.9",
+    "jest": "24.9.0",
+    "lint-staged": "9.5.0",
+    "prettier": "1.19.1",
+    "ramda": "^0.26.1",
+    "sql-query-builder-like-firestore": "^1.0.14",
+    "ts-jest": "24.2.0",
+    "tslint": "5.20.1",
+    "tslint-config-prettier": "1.18.0",
+    "typescript": "3.7.4"
+  }
+}
