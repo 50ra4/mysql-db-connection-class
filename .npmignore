@@ -12,3 +12,4 @@ docs/
 prettier.config.js
 private/
 tests/
+memo/
