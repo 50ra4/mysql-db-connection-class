@@ -41,6 +41,7 @@
     "ts-jest": "24.2.0",
     "tslint": "5.20.1",
     "tslint-config-prettier": "1.18.0",
+    "typedoc": "^0.16.8",
     "typescript": "3.7.4"
   }
 }
