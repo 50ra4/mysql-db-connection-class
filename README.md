@@ -1,6 +1,8 @@
 # mysql-db-pool-connection-class
 
-## what is `mysql-db-pool-connection-class`?
+## What is "mysql-db-pool-connection-class"?
+
+Class used when trying to handle MySQL PoolConnection nicely with node.js express etc.
 
 ## Installation
 
@@ -10,19 +12,20 @@ npm package
 npm i mysql-db-pool-connection-class
 ```
 
-&&
+And
 
 ```
 import { MySqlPoolConnection } from 'mysql-db-pool-connection-class';
 ```
 
-## usage
+## Usage
 
 API Documentation created By typedoc: [Check github pages](https://shigarashi1.github.io/mysql-db-connection-class)
 
 ### How to class
 
 ```
+import { SqlQueryFactory } from 'sql-query-builder-like-firestore';
 import { IMySqlPoolConnection, MySqlPoolConnection } from 'mysql-db-pool-connection-class';
 
 const mysqlPoolConfig = {
@@ -49,10 +52,21 @@ export class TestClass {
     return await this.connection.executeWithTransaction(async (connection) => {
       await this.connection.execute(
         connection,
-        `UPDATE SET username = /'${username}/' where id = ${userId}`,
+        SqlQueryFactory.update('projects')
+          .column({ columnName: 'name', value: projectName })
+          .where('id', '=', projectId).query,
       );
+      await this.connection
+          .execute(
+            connection,
+            SqlQueryFactory.insert('user').column({
+              columnName: 'name',
+              value: username,
+            }).query,
+          )
       const projects = await this.connection
-        .execute(connection, 'SELECT * from where id = ${userId};');
+        .execute(connection, SqlQueryFactory.select('projects').where('id', '=', projectId).query)
+        .then(toProjects);
       return projects[0];
     });
   }
@@ -105,6 +119,7 @@ console.log(modifiedUser);
 ### How to converter
 
 ```
+import { SqlQueryFactory } from 'sql-query-builder-like-firestore';
 import { toRowDataPacket, TMapDBColumnToPropertyConfig } from 'mysql-db-pool-connection-class';
 import { format } from 'date-fns';
 import * as R from 'ramda';
